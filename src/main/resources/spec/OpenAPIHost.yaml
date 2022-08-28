@@ -1,0 +1,43 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: OpenAPI Host Repository
+  description: A simple API that hosts Swagger/OpenAPI schemas
+
+servers:
+  - url: http://10.93.145.208:8080
+
+paths:
+  /host-spec:
+    get:
+      operationId: getOpenAPIHostSpec
+      description: Returns OpenAPI Host Repository Specification
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+  /v2/petstore:
+    get:
+      operationId: getV2PetstoreSpec
+      description: Returns Swagger 2.0 Petstore schema
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+  /v3/petstore:
+    get:
+      operationId: getV3PetstoreSpec
+      description: Returns Swagger 3.0 Petstore schema
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string

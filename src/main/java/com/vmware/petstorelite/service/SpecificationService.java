@@ -8,15 +8,19 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class SpecificationService {
-//TODO Add disclaimer that this server cannot be used to execute REST Operations against
-    static final String openAPIv1SpecFile = "src/main/resources/SwaggerPetStore_v1.json";
-    static final String openAPIv2SpecFile = "src/main/resources/SwaggerPetStore_v2.json";
+    static final String openAPIv2SpecFile = "src/main/resources/external/SwaggerPetStore_v2.json";
+    static final String openAPIv3SpecFile = "src/main/resources/external/SwaggerPetStore_v3.json";
 
-    public String getV1Spec() {
+    static final String openAPIHostSpecFile = "src/main/resources/spec/OpenAPIHost.yaml";
+
+    /**
+     * This is supposed to come from external service.
+     */
+    public String getV2PetstoreSpecification() {
         String result = null;
 
         try {
-            result = readFile(openAPIv1SpecFile);
+            result = readFile(openAPIv2SpecFile);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -24,11 +28,26 @@ public class SpecificationService {
         return result;
     }
 
-    public String getV2Spec() {
+    /**
+     * This is supposed to come from external service.
+     */
+    public String getV3PetstoreSpecification() {
         String result = null;
 
         try {
-            result = readFile(openAPIv2SpecFile);
+            result = readFile(openAPIv3SpecFile);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
+        return result;
+    }
+
+    public String getHostSpecification() {
+        String result = null;
+
+        try {
+            result = readFile(openAPIHostSpecFile);
         } catch (IOException ex) {
             ex.printStackTrace();
         }

@@ -1,11 +1,15 @@
 # Lite petstore server
-This server is used for the {link} blogpost demo. It exposes 2 endpoints which return
-v1 and v2 OpenAPI schemas. 
+This server is used for the {link} blogpost demo. It exposes 3 endpoints which return
+OpenAPI host schema and Swagger v2 and OpenAPI v3 Petstore schemas. 
 
 ```
-http://{server.ip}:8080/petstore/v1/specification
+http://{server.ip}:8080/host-spec
 ```
 
 ```
-http://{server.ip}:8080/petstore/v2/specification
+http://{server.ip}:8080/v2/petstore
+```
+
+```
+http://{server.ip}:8080/v3/petstore
 ```

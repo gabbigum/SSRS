@@ -832,7 +832,7 @@
   },
   "servers": [
     {
-      "url": "http://10.93.145.29:8080/petstore/v2"
+      "url": "http://10.93.145.29:8080/v3/petstore"
     }
   ],
   "components": {
