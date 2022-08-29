@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @Slf4j
-@RequestMapping // TODO: Update in blogpost
+@RequestMapping
 public class SpecificationController {
 
     final SpecificationService specificationService;
@@ -26,7 +26,7 @@ public class SpecificationController {
         return specificationService.getHostSpecification();
     }
 
-    @GetMapping("/v2/petstore") // TODO: update screenshots and everything else in blogpost
+    @GetMapping("/v2/petstore")
     public String getV2PetstoreSpecification() {
         log.info("Getting v2 petstore specification.");
         return specificationService.getV2PetstoreSpecification();
