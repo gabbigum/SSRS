@@ -22,6 +22,37 @@ for (var i = 0; i < schemas.length; i++) {
     generatedHosts.push(host);
 }
 
+for (var index in generatedHosts) {
+    RESTHostManager.addHost(generatedHosts[index])
+}
+
+for (var index in generatedHosts) {
+
+    var hostUrl = generatedHosts[index].url;
+
+    // checks if https exists in hostUrl
+    if ((/^https:/).test(hostUrl)) {
+
+        System.log("Importing certificate from url: " + hostUrl);
+
+        importCertificateFrom(hostUrl);
+    }
+}
+
+function importCertificateFrom(url) {
+
+    var importCertFromUrlWf = System.getModule("com.vmware.library.workflow").getWorkflowById("c5a874a2-e8e7-480d-bdde-d1a80b8a3011");
+
+    var workflowParameters = new Properties();
+
+    workflowParameters.put("url", url);
+    workflowParameters.put("ignoreWarnings", true);
+
+    var token = importCertFromUrlWf.execute(workflowParameters);
+
+    System.getModule("com.vmware.library.workflow").waitAllWorkflowComplete([token]);
+}
+
 function createRESTHostFrom(swaggerVersion, schema) {
     var host;
 
@@ -43,8 +74,4 @@ function createRESTHostFrom(swaggerVersion, schema) {
     }
 
     return host
-}
-
-for (var index in generatedHosts) {
-    RESTHostManager.addHost(generatedHosts[index])
 }

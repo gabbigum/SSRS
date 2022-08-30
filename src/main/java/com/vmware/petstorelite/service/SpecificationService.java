@@ -1,6 +1,8 @@
 package com.vmware.petstorelite.service;
 
 import java.io.IOException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
@@ -43,7 +45,7 @@ public class SpecificationService {
         return result;
     }
 
-    public String getHostSpecification() {
+    public String getHostSpecification(String host) {
         String result = null;
 
         try {
@@ -51,6 +53,9 @@ public class SpecificationService {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+
+        // inject the url of the server in the host spec string - this way we always return correct url
+        result = result.replace("${hostUrl}", host);
 
         return result;
     }

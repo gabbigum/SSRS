@@ -5,7 +5,7 @@ info:
   description: A simple API that hosts Swagger/OpenAPI schemas
 
 servers:
-  - url: http://10.93.145.208:8080
+  - url: http://${hostUrl}
 
 paths:
   /host-spec:
